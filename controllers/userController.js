@@ -1,11 +1,12 @@
 const User = require('../models/User');
 const crypto = require('crypto');
 const { validationResult } = require('express-validator');
+const asyncHandler = require('../middleware/asyncHandler');
 
 // @desc    Register user
 // @route   POST /api/users/register
 // @access  Public
-exports.register = async (req, res, next) => {
+exports.register = asyncHandler( (req, res, next) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -40,7 +41,7 @@ exports.register = async (req, res, next) => {
 // @desc    Login user
 // @route   POST /api/users/login
 // @access  Public
-exports.login = async (req, res, next) => {
+exports.login = asyncHandler( (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -103,7 +104,7 @@ exports.login = async (req, res, next) => {
 // @desc    Get current logged in user
 // @route   GET /api/users/me
 // @access  Private
-exports.getMe = async (req, res, next) => {
+exports.getMe = asyncHandler( (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
 
@@ -119,7 +120,7 @@ exports.getMe = async (req, res, next) => {
 // @desc    Log user out / clear cookie
 // @route   GET /api/users/logout
 // @access  Private
-exports.logout = async (req, res, next) => {
+exports.logout = asyncHandler( (req, res, next) => {
   res.cookie('token', 'none', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true
@@ -134,7 +135,7 @@ exports.logout = async (req, res, next) => {
 // @desc    Update user details
 // @route   PUT /api/users/updatedetails
 // @access  Private
-exports.updateDetails = async (req, res, next) => {
+exports.updateDetails = asyncHandler( (req, res, next) => {
   try {
     const fieldsToUpdate = {
       name: req.body.name,
@@ -158,7 +159,7 @@ exports.updateDetails = async (req, res, next) => {
 // @desc    Update password
 // @route   PUT /api/users/updatepassword
 // @access  Private
-exports.updatePassword = async (req, res, next) => {
+exports.updatePassword = asyncHandler( (req, res, next) => {
   try {
     const user = await User.findById(req.user.id).select('+password');
 
@@ -182,7 +183,7 @@ exports.updatePassword = async (req, res, next) => {
 // @desc    Forgot password
 // @route   POST /api/users/forgotpassword
 // @access  Public
-exports.forgotPassword = async (req, res, next) => {
+exports.forgotPassword = asyncHandler( (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
@@ -211,7 +212,7 @@ exports.forgotPassword = async (req, res, next) => {
 // @desc    Reset password
 // @route   PUT /api/users/resetpassword/:resettoken
 // @access  Public
-exports.resetPassword = async (req, res, next) => {
+exports.resetPassword = asyncHandler( (req, res, next) => {
   try {
 
     const resetPasswordToken = crypto

@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const employeeRoutes = require('./routes/employeeRoutes');
 const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
 const morgan = require('morgan');
 const cors = require('cors');
 const colors = require('colors');
@@ -33,7 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use('/api/employees', employeeRoutes);
 app.use('/api/users', userRoutes);
-
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.send('Employee Management API is running');
@@ -46,4 +47,6 @@ const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
 });
+
+
 
