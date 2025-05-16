@@ -2,11 +2,12 @@ const User = require('../models/User');
 const crypto = require('crypto');
 const { validationResult } = require('express-validator');
 const asyncHandler = require('../middleware/asyncHandler');
+const sendEmail = require('../utils/sendEmail');
 
 // @desc    Register user
 // @route   POST /api/users/register
 // @access  Public
-exports.register = asyncHandler( (req, res, next) => {
+exports.register = asyncHandler(async (req, res, next) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -36,12 +37,12 @@ exports.register = asyncHandler( (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Login user
 // @route   POST /api/users/login
 // @access  Public
-exports.login = asyncHandler( (req, res, next) => {
+exports.login = asyncHandler(async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -99,12 +100,12 @@ exports.login = asyncHandler( (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Get current logged in user
 // @route   GET /api/users/me
 // @access  Private
-exports.getMe = asyncHandler( (req, res, next) => {
+exports.getMe = asyncHandler(async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
 
@@ -115,12 +116,12 @@ exports.getMe = asyncHandler( (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Log user out / clear cookie
 // @route   GET /api/users/logout
 // @access  Private
-exports.logout = asyncHandler( (req, res, next) => {
+exports.logout = asyncHandler( async(req, res, next) => {
   res.cookie('token', 'none', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true
@@ -130,12 +131,12 @@ exports.logout = asyncHandler( (req, res, next) => {
     success: true,
     data: {}
   });
-};
+});
 
 // @desc    Update user details
 // @route   PUT /api/users/updatedetails
 // @access  Private
-exports.updateDetails = asyncHandler( (req, res, next) => {
+exports.updateDetails = asyncHandler(async (req, res, next) => {
   try {
     const fieldsToUpdate = {
       name: req.body.name,
@@ -154,12 +155,12 @@ exports.updateDetails = asyncHandler( (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Update password
 // @route   PUT /api/users/updatepassword
 // @access  Private
-exports.updatePassword = asyncHandler( (req, res, next) => {
+exports.updatePassword = asyncHandler(async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id).select('+password');
 
@@ -178,12 +179,12 @@ exports.updatePassword = asyncHandler( (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Forgot password
 // @route   POST /api/users/forgotpassword
 // @access  Public
-exports.forgotPassword = asyncHandler( (req, res, next) => {
+exports.forgotPassword = asyncHandler( async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
@@ -198,21 +199,39 @@ exports.forgotPassword = asyncHandler( (req, res, next) => {
 
     await user.save({ validateBeforeSave: false });
 
-    // Here, you would send an email with the reset token
-    // For our demo, we'll just return the token in the response
-    res.status(200).json({
-      success: true,
-      resetToken
-    });
+    try {
+      const message = `
+        <h1>Password Reset Request</h1>
+        <p>Please click the link below to reset your password:</p>
+        <a href="${resetUrl}">${resetUrl}</a>
+      `;
+    
+      await sendEmail({
+        email: user.email,
+        subject: 'Password Reset Token',
+        message
+      });
+    
+      res.status(200).json({ success: true, data: 'Email sent' });
+    } catch (err) {
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpire = undefined;
+      await user.save({ validateBeforeSave: false });
+    
+      return next(new Error('Email could not be sent'));
+    }
+
+
+
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Reset password
 // @route   PUT /api/users/resetpassword/:resettoken
 // @access  Public
-exports.resetPassword = asyncHandler( (req, res, next) => {
+exports.resetPassword = asyncHandler( async (req, res, next) => {
   try {
 
     const resetPasswordToken = crypto
@@ -241,7 +260,7 @@ exports.resetPassword = asyncHandler( (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 const sendTokenResponse = (user, statusCode, res) => {
 

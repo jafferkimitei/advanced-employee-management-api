@@ -1,9 +1,10 @@
 const Employee = require('../models/Employee');
+const asyncHandler = require('../middleware/asyncHandler');
 
 // @desc    Get all employees
 // @route   GET /api/employees
 // @access  Private
-exports.getEmployees = async (req, res, next) => {
+exports.getEmployees = asyncHandler(async (req, res, next) => {
   try {
     
     let query;
@@ -78,12 +79,12 @@ exports.getEmployees = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Search employees
 // @route   GET /api/employees/search
 // @access  Private
-exports.searchEmployees = async (req, res, next) => {
+exports.searchEmployees = asyncHandler(async (req, res, next) => {
   try {
     const { query } = req.query;
     
@@ -116,12 +117,12 @@ exports.searchEmployees = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Get single employee
 // @route   GET /api/employees/:id
 // @access  Private
-exports.getEmployee = async (req, res, next) => {
+exports.getEmployee = asyncHandler(async (req, res, next) => {
   try {
     const employee = await Employee.findById(req.params.id);
     
@@ -139,12 +140,12 @@ exports.getEmployee = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Create new employee
 // @route   POST /api/employees
 // @access  Private (Admin/Manager only)
-exports.createEmployee = async (req, res, next) => {
+exports.createEmployee = asyncHandler(async (req, res, next) => {
   try {
     
     req.body.user = req.user.id;
@@ -158,12 +159,12 @@ exports.createEmployee = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Update employee
 // @route   PUT /api/employees/:id
 // @access  Private (Admin/Manager only)
-exports.updateEmployee = async (req, res, next) => {
+exports.updateEmployee = asyncHandler(async (req, res, next) => {
   try {
     const employee = await Employee.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -184,12 +185,12 @@ exports.updateEmployee = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
 
 // @desc    Delete employee
 // @route   DELETE /api/employees/:id
 // @access  Private (Admin only)
-exports.deleteEmployee = async (req, res, next) => {
+exports.deleteEmployee = asyncHandler(async (req, res, next) => {
   try {
     const employee = await Employee.findById(req.params.id);
     
@@ -209,4 +210,4 @@ exports.deleteEmployee = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+});
