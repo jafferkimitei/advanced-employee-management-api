@@ -1,0 +1,304 @@
+{
+    "users": [
+      {
+        "name": "Admin User",
+        "email": "admin@company.com",
+        "role": "admin",
+        "password": "password123",
+        "createdAt": "2024-01-10T00:00:00.000Z"
+      },
+      {
+        "name": "Jane Smith",
+        "email": "jane.smith@company.com",
+        "role": "admin",
+        "password": "password123",
+        "createdAt": "2024-01-15T00:00:00.000Z"
+      },
+      {
+        "name": "Sarah Johnson",
+        "email": "sarah.johnson@company.com",
+        "role": "manager",
+        "password": "password123",
+        "createdAt": "2024-02-01T00:00:00.000Z"
+      },
+      {
+        "name": "David Wilson",
+        "email": "david.wilson@company.com",
+        "role": "manager",
+        "password": "password123",
+        "createdAt": "2024-02-10T00:00:00.000Z"
+      },
+      {
+        "name": "Lisa Brown",
+        "email": "lisa.brown@company.com",
+        "role": "manager",
+        "password": "password123",
+        "createdAt": "2024-02-20T00:00:00.000Z"
+      },
+      {
+        "name": "John Doe",
+        "email": "john.doe@company.com",
+        "role": "user",
+        "password": "password123",
+        "createdAt": "2024-03-01T00:00:00.000Z"
+      },
+      {
+        "name": "Amanda Martinez",
+        "email": "amanda.martinez@company.com",
+        "role": "user",
+        "password": "password123",
+        "createdAt": "2024-03-10T00:00:00.000Z"
+      },
+      {
+        "name": "Thomas Wang",
+        "email": "thomas.wang@company.com",
+        "role": "user",
+        "password": "password123",
+        "createdAt": "2024-03-20T00:00:00.000Z"
+      },
+      {
+        "name": "Jennifer Taylor",
+        "email": "jennifer.taylor@company.com",
+        "role": "user",
+        "password": "password123",
+        "createdAt": "2024-04-01T00:00:00.000Z"
+      },
+      {
+        "name": "Kevin Patel",
+        "email": "kevin.patel@company.com",
+        "role": "user",
+        "password": "password123",
+        "createdAt": "2024-04-10T00:00:00.000Z"
+      }
+    ],
+    "employees": [
+      {
+        "firstName": "James",
+        "lastName": "Rodriguez",
+        "email": "james.rodriguez@company.com",
+        "phone": "555-123-4567",
+        "department": "Engineering",
+        "position": "Senior Software Engineer",
+        "hireDate": "2021-03-15T00:00:00.000Z",
+        "salary": 120000,
+        "isActive": true,
+        "createdAt": "2021-03-15T00:00:00.000Z"
+      },
+      {
+        "firstName": "Michelle",
+        "lastName": "Chang",
+        "email": "michelle.chang@company.com",
+        "phone": "555-234-5678",
+        "department": "Engineering",
+        "position": "Full Stack Developer",
+        "hireDate": "2022-01-10T00:00:00.000Z",
+        "salary": 95000,
+        "isActive": true,
+        "createdAt": "2022-01-10T00:00:00.000Z"
+      },
+      {
+        "firstName": "Alex",
+        "lastName": "Johnson",
+        "email": "alex.johnson@company.com",
+        "phone": "555-345-6789",
+        "department": "Engineering",
+        "position": "Frontend Developer",
+        "hireDate": "2022-05-20T00:00:00.000Z",
+        "salary": 90000,
+        "isActive": true,
+        "createdAt": "2022-05-20T00:00:00.000Z"
+      },
+      {
+        "firstName": "Priya",
+        "lastName": "Patel",
+        "email": "priya.patel@company.com",
+        "phone": "555-456-7890",
+        "department": "Engineering",
+        "position": "Backend Developer",
+        "hireDate": "2022-08-15T00:00:00.000Z",
+        "salary": 92000,
+        "isActive": true,
+        "createdAt": "2022-08-15T00:00:00.000Z"
+      },
+      {
+        "firstName": "Sophia",
+        "lastName": "Garcia",
+        "email": "sophia.garcia@company.com",
+        "phone": "555-678-9012",
+        "department": "HR",
+        "position": "HR Director",
+        "hireDate": "2020-07-12T00:00:00.000Z",
+        "salary": 115000,
+        "isActive": true,
+        "createdAt": "2020-07-12T00:00:00.000Z"
+      },
+      {
+        "firstName": "Marcus",
+        "lastName": "Williams",
+        "email": "marcus.williams@company.com",
+        "phone": "555-789-0123",
+        "department": "HR",
+        "position": "Recruiter",
+        "hireDate": "2021-09-05T00:00:00.000Z",
+        "salary": 75000,
+        "isActive": true,
+        "createdAt": "2021-09-05T00:00:00.000Z"
+      },
+      {
+        "firstName": "Natalie",
+        "lastName": "Chen",
+        "email": "natalie.chen@company.com",
+        "phone": "555-012-3456",
+        "department": "Finance",
+        "position": "Finance Director",
+        "hireDate": "2019-05-10T00:00:00.000Z",
+        "salary": 135000,
+        "isActive": true,
+        "createdAt": "2019-05-10T00:00:00.000Z"
+      },
+      {
+        "firstName": "Daniel",
+        "lastName": "Lopez",
+        "email": "daniel.lopez@company.com",
+        "phone": "555-123-4568",
+        "department": "Finance",
+        "position": "Senior Accountant",
+        "hireDate": "2020-09-15T00:00:00.000Z",
+        "salary": 95000,
+        "isActive": true,
+        "createdAt": "2020-09-15T00:00:00.000Z"
+      },
+      {
+        "firstName": "Ethan",
+        "lastName": "Brooks",
+        "email": "ethan.brooks@company.com",
+        "phone": "555-567-8902",
+        "department": "Marketing",
+        "position": "Marketing Director",
+        "hireDate": "2020-01-15T00:00:00.000Z",
+        "salary": 125000,
+        "isActive": true,
+        "createdAt": "2020-01-15T00:00:00.000Z"
+      },
+      {
+        "firstName": "Zoe",
+        "lastName": "Martinez",
+        "email": "zoe.martinez@company.com",
+        "phone": "555-678-9013",
+        "department": "Marketing",
+        "position": "Social Media Manager",
+        "hireDate": "2021-04-20T00:00:00.000Z",
+        "salary": 80000,
+        "isActive": true,
+        "createdAt": "2021-04-20T00:00:00.000Z"
+      },
+      {
+        "firstName": "Lucas",
+        "lastName": "Wilson",
+        "email": "lucas.wilson@company.com",
+        "phone": "555-901-2346",
+        "department": "Sales",
+        "position": "Sales Director",
+        "hireDate": "2019-08-10T00:00:00.000Z",
+        "salary": 130000,
+        "isActive": true,
+        "createdAt": "2019-08-10T00:00:00.000Z"
+      },
+      {
+        "firstName": "Emma",
+        "lastName": "Davis",
+        "email": "emma.davis@company.com",
+        "phone": "555-012-3457",
+        "department": "Sales",
+        "position": "Senior Sales Manager",
+        "hireDate": "2020-11-15T00:00:00.000Z",
+        "salary": 110000,
+        "isActive": true,
+        "createdAt": "2020-11-15T00:00:00.000Z"
+      },
+      {
+        "firstName": "Omar",
+        "lastName": "Hassan",
+        "email": "omar.hassan@company.com",
+        "phone": "555-123-4569",
+        "department": "Sales",
+        "position": "Account Executive",
+        "hireDate": "2021-05-20T00:00:00.000Z",
+        "salary": 90000,
+        "isActive": true,
+        "createdAt": "2021-05-20T00:00:00.000Z"
+      },
+      {
+        "firstName": "Isabella",
+        "lastName": "Thompson",
+        "email": "isabella.thompson@company.com",
+        "phone": "555-456-7892",
+        "department": "Operations",
+        "position": "Operations Director",
+        "hireDate": "2019-03-20T00:00:00.000Z",
+        "salary": 140000,
+        "isActive": true,
+        "createdAt": "2019-03-20T00:00:00.000Z"
+      },
+      {
+        "firstName": "William",
+        "lastName": "Chen",
+        "email": "william.chen@company.com",
+        "phone": "555-567-8903",
+        "department": "Operations",
+        "position": "Operations Manager",
+        "hireDate": "2020-05-15T00:00:00.000Z",
+        "salary": 105000,
+        "isActive": true,
+        "createdAt": "2020-05-15T00:00:00.000Z"
+      },
+      {
+        "firstName": "Ava",
+        "lastName": "Smith",
+        "email": "ava.smith@company.com",
+        "phone": "555-678-9014",
+        "department": "Operations",
+        "position": "Project Coordinator",
+        "hireDate": "2021-10-10T00:00:00.000Z",
+        "salary": 70000,
+        "isActive": true,
+        "createdAt": "2021-10-10T00:00:00.000Z"
+      },
+      {
+        "firstName": "Jamal",
+        "lastName": "Brown",
+        "email": "jamal.brown@company.com",
+        "phone": "555-789-0125",
+        "department": "Operations",
+        "position": "Supply Chain Analyst",
+        "hireDate": "2022-09-05T00:00:00.000Z",
+        "salary": 80000,
+        "isActive": true,
+        "createdAt": "2022-09-05T00:00:00.000Z"
+      },
+      {
+        "firstName": "Hannah",
+        "lastName": "Miller",
+        "email": "hannah.miller@company.com",
+        "phone": "555-890-1236",
+        "department": "Operations",
+        "position": "Logistics Coordinator",
+        "hireDate": "2023-04-15T00:00:00.000Z",
+        "salary": 65000,
+        "isActive": false,
+        "createdAt": "2023-04-15T00:00:00.000Z"
+      },
+      {
+        "firstName": "Carlos",
+        "lastName": "Rodriguez",
+        "email": "carlos.rodriguez@company.com",
+        "phone": "555-901-2347",
+        "department": "Engineering",
+        "position": "QA Engineer",
+        "hireDate": "2021-11-01T00:00:00.000Z",
+        "salary": 85000,
+        "isActive": false,
+        "createdAt": "2021-11-01T00:00:00.000Z"
+      }
+    ]
+}

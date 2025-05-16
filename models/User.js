@@ -75,4 +75,26 @@ UserSchema.methods.getResetPasswordToken = function() {
   return resetToken;
 };
 
+UserSchema.methods.registerLoginAttempt = async function(success) {
+    if (success) {
+      
+      this.failedLoginAttempts = 0;
+      this.lastLogin = Date.now();
+      this.accountLocked = false;
+      this.accountLockedUntil = null;
+    } else {
+      
+      this.failedLoginAttempts += 1;
+      
+      
+      if (this.failedLoginAttempts >= 5) {
+        this.accountLocked = true;
+        
+        this.accountLockedUntil = Date.now() + (30 * 60 * 1000);
+      }
+    }
+    
+    await this.save();
+  };
+
 module.exports = mongoose.model('User', UserSchema);
